@@ -266,6 +266,7 @@ form.submitting button {
     width: 20px;
     height: 20px;
     right: 10px;
+  filter: drop-shadow(2px 2px 4px rgb(247, 188, 227));
   }
   
   .regbtn button {
