@@ -66,3 +66,29 @@
     height: 100px;
     z-index: 20;
 }
+
+@media (max-width: 576px) {
+
+    .timeout .result-icon span img{
+        width: 100px;
+        height: 100px;
+    }
+     .timer-ring {
+        width: 120px;
+        height: 120px;
+    }
+    .img-container{
+        left: 78%;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px){
+    .timeout .result-icon span img{
+        width: 100px;
+        height: 100px;
+    }
+     .timer-ring {
+        width: 120px;
+        height: 120px;
+    }
+}

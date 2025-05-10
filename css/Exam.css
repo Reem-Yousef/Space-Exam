@@ -18,7 +18,7 @@
     box-shadow: 0 0 30px rgba(255, 54, 163, 0.2);
     display: flex;
     flex-direction: column;
-    height: 94vh;
+    /* height: 94vh; */
     transition: all 0.3s ease;
 }
 
@@ -65,13 +65,6 @@
     letter-spacing: 2px;
 }
 
-.timer.warning {
-    background: rgb(201, 136, 179);
-    color: #000000;
-    animation: pulse-warning 1s infinite alternate;
-    box-shadow: 0 0 15px rgba(197, 97, 144, 0.6);
-}
-
 @keyframes timerShake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-4px); }
@@ -79,28 +72,32 @@
 }
 
 .clock-icon {
-    width: 40px; 
-    height: 40px; 
+    width: 50px; 
+    height: 50px; 
     transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     filter: drop-shadow(0 0 4px var(--hot-pink));
     transition: transform 0.3s ease;
 }
 
-@keyframes iconShake {
-    0%, 100% { transform: translateX(0); }
-    10% { transform: translateX(-4px) rotate(-5deg); }
-    20% { transform: translateX(4px) rotate(5deg); }
-    30% { transform: translateX(-3px) rotate(-3deg); }
-    40% { transform: translateX(3px) rotate(3deg); }
-    50% { transform: translateX(0); }
+
+@keyframes pulse-warning {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.05); opacity: 1; }
 }
 
 @keyframes shake {
     0% { transform: translateX(0); }
-    25% { transform: translateX(-8px) rotate(-10deg); }
-    50% { transform: translateX(8px) rotate(10deg); }
+    25% { transform: translateX(-4px) rotate(-5deg); }
+    50% { transform: translateX(4px) rotate(5deg); }
     75% { transform: translateX(-4px) rotate(-5deg); }
     100% { transform: translateX(0); }
+}
+
+.timer.warning {
+    background: rgb(201, 136, 179);
+    color: #000000;
+    animation: pulse-warning 1s infinite alternate;
+    box-shadow: 0 0 15px rgba(197, 97, 144, 0.6);
 }
 
 .clock-icon.shake {
@@ -536,10 +533,11 @@
 @media (max-width: 576px) {
     .exam-container {
         padding: 10px 15px;
+        height: 96vh;
     }
     
     .header {
-        flex-direction: column;
+        /* flex-direction: column; */
         gap: 10px;
         margin-bottom: 5px;
         padding-bottom: 5px;
@@ -551,19 +549,28 @@
     }
     
     .timer {
-        padding: 0px 10px !important;
+        padding: 4px 10px !important;
         font-size: 16px;
     }
     
     .clock-icon {
-        width: 22px;
-        height: 22px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .question-numbers{
+        margin: 10px 0px;
     }
     
     .question-number {
         width: 26px;
         height: 26px;
         font-size: 14px;
+    }
+
+    .main-section{
+        flex-direction:column;
+        gap:20px;
     }
     
     .question-container h3 {
@@ -581,14 +588,26 @@
     .answer-option label {
         font-size: 14px;
     }
+
+    .left-section{
+        flex: 0;
+        margin: 10px 0;
+    }
     
     .right-section {
         min-height: auto;
+        flex: 0;
     }
     
+    .list-toggle-buttons{
+        flex-direction: row
+    }
+
     .list-toggle-buttons button {
         padding: 8px 10px;
         font-size: 13px;
+        width: 45%;
+        margin: auto;
     }
     
     .actions {
@@ -596,11 +615,10 @@
         flex-wrap: wrap;
         gap: 8px;
     }
-    
+
     .actions button {
-        padding: 8px 12px;
-        font-size: 13px;
-        flex: 1 1 40%;
+        padding: 8px 15px;
+        margin-top: 5px;
     }
 }
 
@@ -609,17 +627,23 @@
     .header h1 {
         font-size: 22px;
     }
-    
+
     .timer {
+        padding: 6px 10px !important;
         font-size: 16px;
-        padding: 0px 12px !important;
     }
     
     .clock-icon {
-        width: 24px;
-        height: 24px;
+        width: 35px;
+        height:35px;
     }
     
+
+    .main-section{
+        flex-direction:column;
+        gap:20px;
+    }
+
     .question-container h3 {
         font-size: 20px;
     }
@@ -632,13 +656,33 @@
         padding: 8px 15px;
     }
     
+    .question-numbers{
+        margin: 10px 0px;
+    }
+    
     .question-number {
         width: 28px;
         height: 28px;
     }
     
     .right-section {
-        min-height: auto;
+        flex:0;
+    }
+
+    .list-toggle-buttons{
+        flex-direction: row
+    }
+
+    .list-toggle-buttons button {
+        padding: 8px 10px;
+        font-size: 13px;
+        width: 45%;
+        margin: auto;
+    }
+
+    .actions{
+        width: 98%;
+        margin-top: 15px;
     }
 }
 
@@ -670,6 +714,10 @@
     .right-section {
         min-height: auto;
     }
+
+    .list-toggle-buttons button{
+        width: 80%;
+    }
     
     .question-container h3 {
         font-size: 22px;
@@ -680,7 +728,7 @@
     }
     
     .actions {
-        width: 76%;
+        width: 66%;
         flex-wrap: nowrap;
     }
     
@@ -791,5 +839,8 @@
     .popup-content {
         max-width: 600px;
     }
-}
 
+    .actions{
+        width: 76%;
+    }
+}

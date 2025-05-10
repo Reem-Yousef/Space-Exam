@@ -106,7 +106,7 @@
 @media (max-width: 768px) {
     .result-container {
         padding: 30px 20px;
-        width: 95%;
+        width: 90%;
     }
 
     .result-icon {
@@ -137,8 +137,8 @@
 
 .true-answers{
     width: 150px;
-    height: 60px;
-    padding: 10px;
+    height: 74px;
+    padding: 14px;
     border: 2px solid rgba(255, 54, 163, 0.2);
     border-radius: 20px;
     margin-right: 20px;

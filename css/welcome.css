@@ -8,10 +8,9 @@
   position: absolute;
   top: 15%;
   left: 10%;
-  width: 100px;
+  width: 160px;
   z-index: 4;
-  animation: UFO-FLY 2s ease-in-out forwards,
-             Go-Up 2s ease-in-out forwards 2s;
+  animation: UFO-FLY 2s ease-in-out forwards, Go-Up 2s ease-in-out forwards 2s;
 }
 
 .ufo-img {
@@ -134,7 +133,7 @@
   position: absolute;
   top: 55%;
   left: 50%;
-  width: 30%;
+  width: 40%;
   margin: auto;
   transform: translate(-50%, -50%);
   background: rgba(12, 12, 12, 0.123);
@@ -237,42 +236,44 @@
 
 @media (max-width: 1200px) {
   .ufo-container {
-    width: 220px;
+    width: 180px;
   }
-  .ufo-img {
-    width: 100%;
+  .ufo-welcome {
+    width: 50%;
+    padding: 2rem;
+  }
+  .welcome-content h1 {
+    font-size: 1.8rem;
   }
 }
 
 @media (max-width: 768px) {
   .ufo-container {
-    width: 160px;
-  }
-  .ufo-img {
-    width: 100%;
+    width: 140px;
   }
   .ufo-welcome {
-    width: 85%;
+    width: 50%;
     padding: 1.5rem;
   }
   .welcome-content h1 {
-    font-size: 1.75rem;
+    font-size: 1.6rem;
   }
 }
 
 @media (max-width: 576px) {
   .ufo-container {
     width: 100px;
-    z-index: 15;
+    z-index: 20;
   }
-  .ufo-img {
-    width: 100%;
+  .ufo-welcome {
+    width: 80%;
+    padding: 1rem;
   }
   .welcome-buttons {
     flex-direction: column;
     gap: 0.75rem;
   }
-  .welcome-button {
-    width: 100%;
+  .welcome-content h1 {
+    font-size: 1.4rem;
   }
 }

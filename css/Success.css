@@ -72,3 +72,24 @@
         transform: translateX(0) rotate(0deg);
     }
 }
+
+@media (max-width: 576px) {
+    .image img{
+        width: 120px;
+        height: 70px;
+    }
+    .image{
+        height: 13vh;
+    }
+    .welcome-button{
+        padding: 5px 15px;
+        margin: 0px 10px;
+    }
+    .result-container{
+        top:1%;
+        height: 90vh;
+    }
+    .button{
+        margin: 5px 10px;
+    }
+}

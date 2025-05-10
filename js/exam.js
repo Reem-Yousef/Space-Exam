@@ -351,10 +351,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (state.timeLeft <= 0) handleTimeOut();
         }, 1000);
     };
-
- const updateTimerDisplay = () => {
+const updateTimerDisplay = () => {
     const minutes = Math.floor(state.timeLeft / 60).toString().padStart(2, '0');
     const seconds = (state.timeLeft % 60).toString().padStart(2, '0');
+    const clockIcon = document.querySelector('.clock-icon');
 
     elements.timerElement.innerHTML = `
         <img src="../images/download (1).png" class="clock-icon">
@@ -365,15 +365,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     elements.timerElement.classList.toggle('warning', isWarning);
     
     if (isWarning) {
-        elements.timerElement.style.animation = 'pulseWarning 1s infinite';
+        // Apply pulse animation to the timer container
+        elements.timerElement.style.animation = 'pulse-warning 1s infinite alternate';
         
+        // Setup shake animation for the clock icon
         if (!state.isShaking) {
             state.isShaking = true;
             state.shakeInterval = setInterval(() => {
-                elements.timerElement.classList.add('shake');
-                setTimeout(() => {
-                    elements.timerElement.classList.remove('shake');
-                }, 500);
+                const clockIcon = document.querySelector('.clock-icon');
+                if (clockIcon) {
+                    clockIcon.classList.add('shake');
+                    setTimeout(() => {
+                        clockIcon.classList.remove('shake');
+                    }, 500);
+                }
             }, 3000);
         }
     } 
@@ -383,10 +388,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (state.shakeInterval) {
             clearInterval(state.shakeInterval);
             state.isShaking = false;
-            elements.timerElement.classList.remove('shake');
+            const clockIcon = document.querySelector('.clock-icon');
+            if (clockIcon) {
+                clockIcon.classList.remove('shake');
+            }
         }
     }
 };
+
     const handleTimeOut = () => {
         clearInterval(state.timerInterval);
 
