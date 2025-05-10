@@ -352,42 +352,41 @@ document.addEventListener('DOMContentLoaded', async () => {
         }, 1000);
     };
 
-    const updateTimerDisplay = () => {
-        const minutes = Math.floor(state.timeLeft / 60).toString().padStart(2, '0');
-        const seconds = (state.timeLeft % 60).toString().padStart(2, '0');
+ const updateTimerDisplay = () => {
+    const minutes = Math.floor(state.timeLeft / 60).toString().padStart(2, '0');
+    const seconds = (state.timeLeft % 60).toString().padStart(2, '0');
 
-        elements.timerElement.innerHTML = `
-            <img src="../images/download (1).png" class="clock-icon">
-            <p class="time-display">${minutes}:${seconds}</p>
-        `;
+    elements.timerElement.innerHTML = `
+        <img src="../images/download (1).png" class="clock-icon">
+        <p class="time-display">${minutes}:${seconds}</p>
+    `;
+    
+    const isWarning = state.timeLeft <= 30;
+    elements.timerElement.classList.toggle('warning', isWarning);
+    
+    if (isWarning) {
+        elements.timerElement.style.animation = 'pulseWarning 1s infinite';
         
-        const isWarning = state.timeLeft <= 30;
-        elements.timerElement.classList.toggle('warning', isWarning);
-        
-        if(isWarning) {
-            elements.timerElement.style.animation = 'pulseWarning 1s infinite';
-        } else {
-            elements.timerElement.style.animation = '';
-        }
-
-        if (isWarning && !state.isShaking) {
+        if (!state.isShaking) {
             state.isShaking = true;
             state.shakeInterval = setInterval(() => {
-                const icon = elements.timerElement.querySelector('.clock-icon');
-                if (icon) {
-                    icon.classList.add('shake');
-                    setTimeout(() => {
-                        icon.classList.remove('shake');
-                    }, 500);
-                }
-            }, 5000); 
-        } 
-        else if (!isWarning && state.shakeInterval) {
+                elements.timerElement.classList.add('shake');
+                setTimeout(() => {
+                    elements.timerElement.classList.remove('shake');
+                }, 500);
+            }, 3000);
+        }
+    } 
+    else {
+        elements.timerElement.style.animation = '';
+        
+        if (state.shakeInterval) {
             clearInterval(state.shakeInterval);
             state.isShaking = false;
+            elements.timerElement.classList.remove('shake');
         }
-    };
-
+    }
+};
     const handleTimeOut = () => {
         clearInterval(state.timerInterval);
 
