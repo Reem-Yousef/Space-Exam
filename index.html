@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../Examination-System/css/spaceBG.css" />
+    <link rel="stylesheet" href="../Examination-System/css/welcome.css" />
+  </head>
+  <body>
+    <!-- start space bachground -->
+    <section class="scene">
+      <!-- stars -->
+      <div class="stars"></div>
+
+      <!-- meteor -->
+         <div class="meteor" style="display: none;"></div>
+
+      <!-- Planets -->
+      <div class="planet planet-1">
+        <div class="planet-ring"></div>
+      </div>
+      <div class="planet planet-2"></div>
+
+      <!-- here continue any container i.e. signUp -->
+
+      <!-- UFO Container -->
+      <div class="ufo">
+        <div class="ufo-container">
+          <img src="../Examination-System/images/UFO.png" class="ufo-img" />
+          <div class="ufo-beam"></div>
+        </div>
+        <div class="ufo-welcome">
+          <div class="beam-overlay"></div>
+          <div class="welcome-content">
+            <h1>Welcome!<img src="../Examination-System/images/pngegg.png" /></h1>
+            <p>Are you ready for the exam? it's ok don't worry</p>
+            <div class="welcome-buttons">
+              <button class="welcome-button primary"
+              style="background: linear-gradient(45deg, var(--dark-pink), black)"
+              onclick="window.location.href='../Examination-System/html/signup.html';">
+                sign Up
+              </button>
+              <button class="welcome-button secondary"
+              style="background: linear-gradient(45deg, black, var(--dark-pink))"
+              onclick="window.location.href='../Examination-System/html/login.html';">
+              Log In
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../Examination-System/js/spaceBG.js"></script>
+    <script src="../Examination-System/js/welcome.js"></script>
+  </body>
+</html>

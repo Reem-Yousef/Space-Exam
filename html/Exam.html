@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Exam page</title>
+    <link rel="stylesheet" href="../css/spaceBG.css" />
+    <link rel="stylesheet" href="../css/Exam.css" />
+  </head>
+
+  <body>
+    <section class="scene">
+      <div class="stars"></div>
+      <div class="exam-container">
+        <div class="header">
+          <h1>Space Knowledge Test</h1>
+           <div class="timer">
+              <!-- <img src="../images/download (1).png" class="clock-icon"> -->
+              <!-- <p class="time-display">02:00</p> -->
+            </div>
+        </div>
+
+        <div class="question-numbers">
+          <div class="question-number active">1</div>
+          <div class="question-number">2</div>
+          <div class="question-number">3</div>
+          <div class="question-number">4</div>
+          <div class="question-number">5</div>
+        </div>
+
+        <div class="main-section">
+          <div class="left-section">
+            <div class="question-container">
+              <h3 id="question-title">Question 1</h3>
+              <p id="question-text"></p>
+              <div id="answers-container"></div>
+            </div>
+          </div>
+
+        <!-- Right Section -->
+<div class="right-section">
+  <div class="list-toggle-buttons">
+    <button id="showMarkedBtn">Marked Questions</button>
+    <button id="showUnansweredBtn">Unanswered Questions</button>
+  </div>
+</div>
+
+<!-- Popup: Marked Questions -->
+<div id="markedPopup" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup('markedPopup')">&times;</span>
+    <h3>Marked Questions</h3>
+    <ul id="markedList"></ul>
+  </div>
+</div>
+
+<!-- Popup: Unanswered Questions -->
+<div id="unansweredPopup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <h3>Unanswered Questions</h3>
+        <ul id="unansweredList"></ul>
+    </div>
+</div>
+
+
+</div>
+<div class="actions">
+  <button id="prevBtn" class="nav-btn">Previous</button>
+  <button id="markBtn" class="mark-btn">Mark</button>
+  <button id="nextBtn" class="nav-btn">Next</button>
+  <button id="submitBtn" class="submit-btn">Submit</button>
+</div>
+    </section>
+
+    <script src="../js/exam.js"></script>
+    <script src="../js/spaceBG.js"></script>
+  </body>
+</html>

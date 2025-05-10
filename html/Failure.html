@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/spaceBG.css" />
+    <link rel="stylesheet" href="../css/Result.css" />
+    <link rel="stylesheet" href="../css/Failure.css" />
+  </head>
+  <body>
+    <!-- start space bachground -->
+    <section class="scene">
+      <!-- stars -->
+      <div class="stars"></div>
+
+      <!-- meteor -->
+         <div class="meteor" style="display: none;"></div>
+
+      <!-- Planets -->
+      <div class="planet planet-1">
+        <div class="planet-ring"></div>
+      </div>
+      <div class="planet planet-2"></div>
+
+      <!-- here continue any container i.e. signUp -->
+
+      <div id="failure" class="result-container failure">
+        <div class="result-icon">
+          <div class="img-container">
+            <img src="../images/download (3).png" />
+          </div>
+          <div class="black-hole">
+            <div class="event-horizon"></div>
+            <div class="swirl"></div>
+            <div class="light-ring"></div>
+          </div>
+        </div>
+
+        <h1 class="result-title">COSMIC FAILURE</h1>
+
+        <div class="result-info">
+                 <div class="true-answers">
+                <p>Correct Answers:</p>
+                <span id="correct"></span>/<span id="total"></span>
+            </div>
+
+            <div class="true-answers">
+                <p>Time Spent:</p>
+                <p id="timeSpent"></p>
+            </div>
+            </div>
+
+        <div class="score">Your Score: <span id="scorePercent"></span>%</div>
+
+        <p class="result-message" id="failureMessage"></p>
+
+        <button class="button btn-failure" id="logout-btn">log Out</button>
+        <button
+          class="button btn-failure"
+          style="background: linear-gradient(45deg, black, var(--dark-pink))"
+          onclick="window.location.href='Exam.html';"
+        >
+          Retry Exam
+        </button>
+      </div>
+    </section>
+    <script src="../js/spaceBG.js"></script>
+    <script src="../js/Failure.js"></script>
+    <script src="../js/logout.js"></script>
+  </body>
+</html>

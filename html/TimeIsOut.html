@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/spaceBG.css">
+
+    <link rel="stylesheet" href="../css/Result.css">
+    <link rel="stylesheet" href="../css/TimeIsOut.css">
+</head>
+<body>
+     <!-- start space bachground -->
+     <section class="scene">
+        <!-- stars -->
+        <div class="stars"></div>
+
+        <!-- Planets -->
+        <div class="planet planet-1">
+            <div class="planet-ring"></div>
+        </div>
+        <div class="planet planet-2"></div>
+
+        <!-- here continue any container i.e. signUp -->
+
+        <div id="timeout" class="result-container timeout">
+            <div class="result-icon">
+                <svg class="timer-ring" viewBox="0 0 100 100">
+                    <circle class="timer-circle" cx="50" cy="50" r="45"></circle>
+                </svg>
+                <span><img src="../images/download (1).png"></span>
+            </div>
+            <div class="img-container">
+                <img src="../images/sad.png">
+            </div>
+            <h1 class="result-title">TIME'S UP!</h1>
+            <p class="result-title">00:00</p>
+            <div class="score">Questions Answered: <span id="answered"></span>/<span id="total"></span></div>
+           <button id="logout-btn" class="button btn-timeout"
+            style="background: linear-gradient(45deg, var(--dark-pink), black)"
+           >Log Out</button>
+            <button class="button btn-timeout" 
+                    style="background: linear-gradient(45deg, black, var(--dark-pink))"
+                    onclick="window.location.href='Exam.html';">
+                    Retry Mission
+            </button>            
+        </div>
+
+    </section>
+    <script src="../js/spaceBG.js"></script>
+    <script src="../js/TimeIsOut.js"></script>
+    <script src="../js/logout.js"></script>
+</body>
+</html>
