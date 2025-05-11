@@ -533,7 +533,7 @@
 @media (max-width: 576px) {
     .exam-container {
         padding: 10px 15px;
-        height: 96vh;
+        height: 80vh;
     }
     
     .header {

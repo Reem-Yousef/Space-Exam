@@ -332,6 +332,15 @@
 
 /* Extra small phones (< 576px) */
 @media (max-width: 575.98px) {
+   
+    .rocket-container{
+        bottom: 10%;
+    }
+
+    .countdown{
+        bottom: 10%;
+    }
+   
     .Quiz-gide {
         width: 90%;
         height: auto;
