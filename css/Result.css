@@ -107,7 +107,9 @@
     .result-container {
         padding: 30px 20px;
         width: 90%;
-        height: 80vh;
+        height: 74vh;    
+        top: -20px;
+
     }
 
     .result-icon {

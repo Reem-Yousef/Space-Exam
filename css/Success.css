@@ -87,7 +87,7 @@
         margin: 0px 10px;
     }
     .result-container{
-        top:1%;
+        top:-10px;
         height: 75vh;
     }
     .button{

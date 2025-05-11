@@ -71,6 +71,7 @@
 
     .result-container{
         height: 70vh;
+        top: -20px;
     }
 
     .timeout .result-icon span img{
