@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         password: {
             validate: value => {
-                const value = passwordInput.value;
+                // const value = passwordInput.value;
                 if (!value) return "Password is required";
                 if (!/^(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(value)) {
                     return "Password must contain: 8+ chars, lowercase, number & special char";

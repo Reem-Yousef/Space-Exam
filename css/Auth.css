@@ -77,7 +77,7 @@ h2 {
   width: 20px;
   height: 20px;
   cursor: pointer;
-   filter: drop-shadow(2px 2px 4px rgb(248, 160, 241));
+  filter: drop-shadow(0px 0px 10px rgb(221, 219, 221));
   opacity: 0.8;
   transition: width 0.4s ease, height 0.4s ease;
 }
