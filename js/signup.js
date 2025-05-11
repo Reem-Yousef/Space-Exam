@@ -11,8 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const validators = {
         username: {
             validate: value => {
-                if (!value) return 'Name is required';
-                if (!/^[a-zA-Z]{3,}$/.test(value)) return 'Only letters (min 3 characters)';
+                const trimmed = value.trim();
+                const words = trimmed.split(/\s+/); 
+                const allWordsValid = words.every(word => /^[a-zA-Z]+$/.test(word));
+                const totalLetters = words.join('').length;
+
+                if (!trimmed) return 'Name is required';
+                if (!allWordsValid || totalLetters < 3) return 'Only letters (min 3 characters, spaces allowed)';
                 return '';
             },
             errorElement: document.getElementById('error-username')
@@ -27,11 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         password: {
             validate: value => {
-                if (!value) return 'Password is required';
-                if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(value)) {
-                    return 'Password must be 8+ chars with upper/lowercase, number & special char';
+                const value = passwordInput.value;
+                if (!value) return "Password is required";
+                if (!/^(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(value)) {
+                    return "Password must contain: 8+ chars, lowercase, number & special char";
                 }
-                return '';
+                return "";
             },
             errorElement: document.getElementById('error-password')
         },
@@ -77,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function setupRealTimeValidation() {
         Object.keys(inputs).forEach(inputName => {
             const input = inputs[inputName];
-            
+
             input.addEventListener('input', function () {
                 clearTimeout(input.debounceTimer);
                 input.debounceTimer = setTimeout(() => {
@@ -122,8 +128,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (isFormValid) {
             const formData = {
-                username: inputs.username.value,
-                email: inputs.email.value,
+                username: inputs.username.value.trim(),
+                email: inputs.email.value.trim(),
                 password: btoa(inputs.password.value)
             };
 

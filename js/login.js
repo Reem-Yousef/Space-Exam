@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+ document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById("form");
     const usernameInput = document.getElementById("username");
     const passwordInput = document.getElementById("password");
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const savedData = localStorage.getItem('formData');
         if (!savedData) return;
         const { username, password } = JSON.parse(savedData);
-        usernameInput.addEventListener('input', function() {
+        usernameInput.addEventListener('input', function () {
             if (this.value === username) {
                 passwordInput.value = atob(password);
                 setTimeout(() => {
@@ -35,19 +35,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function validateUsername() {
         const value = usernameInput.value.trim();
+        const words = value.split(/\s+/);
+        const allWordsValid = words.every(word => /^[a-zA-Z]+$/.test(word));
+        const totalLetters = words.join('').length;
+
         if (!value) return "Username is required";
-        if (!/^[a-zA-Z]{3,}$/.test(value)) return "Username must be at least 3 letters";
+        if (!allWordsValid || totalLetters < 3) return "Only letters (min 3 characters, spaces allowed)";
         return "";
     }
 
     function validatePassword() {
-        const value = passwordInput.value;
-        if (!value) return "Password is required";
-        if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(value)) {
-            return "Password must contain: 8+ chars, uppercase, lowercase, number & special char";
-        }
-        return "";
+    const value = passwordInput.value;
+    if (!value) return "Password is required";
+    if (!/^(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(value)) {
+        return "Password must contain: 8+ chars, lowercase, number & special char";
     }
+    return "";
+    }
+
 
     function showError(input, message) {
         const errorElement = document.getElementById(`error-${input.id}`);
@@ -94,14 +99,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     if (togglePasswordBtn) {
-        togglePasswordBtn.addEventListener('click', function() {
+        togglePasswordBtn.addEventListener('click', function () {
             const isPassword = passwordInput.type === 'password';
             passwordInput.type = isPassword ? 'text' : 'password';
             togglePasswordBtn.src = passwordInput.type === 'password' ? '../images/two-eyelashes.png' : '../images/cartoon-eyes.png';
         });
     }
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
         let isFormValid = true;
         const usernameError = validateUsername();
