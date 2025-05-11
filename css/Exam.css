@@ -533,7 +533,7 @@
 @media (max-width: 576px) {
     .exam-container {
         padding: 10px 15px;
-        height: 80vh;
+        height: 77vh;
     }
     
     .header {
@@ -623,7 +623,8 @@
 }
 
 /* Phones (≥576px) */
-@media (min-width: 576px) {
+@media (min-width: 576px) and (hover: none) {
+    
     .header h1 {
         font-size: 22px;
     }

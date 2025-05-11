@@ -69,6 +69,10 @@
 
 @media (max-width: 576px) {
 
+    .result-container{
+        height: 70vh;
+    }
+
     .timeout .result-icon span img{
         width: 100px;
         height: 100px;
@@ -79,6 +83,7 @@
     }
     .img-container{
         left: 78%;
+        top: -12.5%;
     }
 }
 

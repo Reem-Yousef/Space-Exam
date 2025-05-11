@@ -265,9 +265,16 @@
     width: 100px;
     z-index: 20;
   }
+  .ufo-beam{
+    top:15.5vh;
+  }
   .ufo-welcome {
     width: 80%;
     padding: 1rem;
+    top: 50%;
+  }
+  .ufo-beam.full{
+    width: 300px;
   }
   .welcome-buttons {
     flex-direction: column;

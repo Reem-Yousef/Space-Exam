@@ -74,6 +74,7 @@
 }
 
 @media (max-width: 576px) {
+
     .image img{
         width: 120px;
         height: 70px;
@@ -87,7 +88,7 @@
     }
     .result-container{
         top:1%;
-        height: 90vh;
+        height: 75vh;
     }
     .button{
         margin: 5px 10px;
