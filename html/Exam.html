@@ -220,6 +220,190 @@
       .modal-button:active {
         transform: translateY(1px);
       }
+      /* Responsive Additions */
+@media screen and (max-width: 1200px) {
+    .exam-container {
+        padding: 15px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .header h1 {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .main-section {
+        flex-direction: column;
+    }
+
+    .left-section, .right-section {
+        width: 100%;
+    }
+
+    .actions {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .actions button {
+        flex-grow: 1;
+        max-width: 45%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 15px 10px;
+    }
+
+    .header h1 {
+        font-size: 20px;
+    }
+
+    .ready-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .question-numbers {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .question-number {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .list-toggle-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .list-toggle-buttons button {
+        width: 100%;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 0 10px;
+    }
+
+    .modal-title {
+        font-size: 20px;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .modal-button {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header {
+        padding: 10px 5px;
+    }
+
+    .header h1 {
+        font-size: 18px;
+    }
+
+    .ready-btn {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    .question-number {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+
+    .actions button {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+
+    .modal-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .modal-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .modal-title {
+        font-size: 18px;
+    }
+
+    .message-text {
+        font-size: 14px;
+    }
+}
+
+/* Additional Responsive Enhancements */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.scene {
+    min-height: 100vh;
+    width: 100%;
+}
+
+.exam-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.main-section {
+    display: flex;
+    gap: 20px;
+}
+
+.left-section, .right-section {
+    flex: 1;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Ensure all buttons and inputs are touch-friendly */
+button, input {
+    touch-action: manipulation;
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Prevent text overflow */
+* {
+    max-width: 100%;
+    word-wrap: break-word;
+}
     </style>
   </head>
 
