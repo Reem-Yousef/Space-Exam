@@ -21,9 +21,5 @@ document.addEventListener('DOMContentLoaded', () => {
             failureMessage.textContent = "The black hole of knowledge awaits! Review the material and try again.";
         }
         
-        document.getElementById('reviewBtn').addEventListener('click', () => {
-            localStorage.setItem('showReview', 'true');
-            window.location.href = 'Review.html';
-        });
     }
 });

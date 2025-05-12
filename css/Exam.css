@@ -533,15 +533,15 @@
 @media (max-width: 576px) {
     .exam-container {
         padding: 10px 15px;
-        height: 80vh;
+        height: 82vh;
         top: -20px;
     }
     
     .header {
-        /* flex-direction: column; */
-        gap: 10px;
-        margin-bottom: 5px;
-        padding-bottom: 5px;
+        flex-direction: column;
+        /* gap: 10px; */
+        /* margin-bottom: 5px; */
+        /* padding-bottom: 5px; */
     }
     
     .header h1 {
