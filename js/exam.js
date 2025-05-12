@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         elements.confirmExitBtn.addEventListener('click', function() {
             state.isExamStarted = false;
-            window.location.href = '../index.html';
+            window.location.href = 'launch.html';
         });
     };
 
