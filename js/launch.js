@@ -65,5 +65,5 @@ document.addEventListener('click', function(event) {
 });
 
 document.getElementById("startExamBtn").addEventListener("click" , function(){
-    location.replace("ques.html"); 
+    location.replace("Exam.html"); 
 });
