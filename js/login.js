@@ -18,20 +18,24 @@
     }
 
     function setupSmartAutofill() {
-        const savedData = localStorage.getItem('formData');
-        if (!savedData) return;
-        const { username, password } = JSON.parse(savedData);
+        const savedUsers = JSON.parse(localStorage.getItem('users')) || [];
+        const usernameFromStorage = savedUsers[0]?.username;
+        const passwordFromStorage = savedUsers[0]?.password;
+
+        if (!usernameFromStorage || !passwordFromStorage) return;
+
         usernameInput.addEventListener('input', function () {
-            if (this.value === username) {
-                passwordInput.value = atob(password);
+            if (this.value === usernameFromStorage) {
+                passwordInput.value = atob(passwordFromStorage);
                 setTimeout(() => {
-                    if (passwordInput.value === atob(password)) {
+                    if (passwordInput.value === atob(passwordFromStorage)) {
                         passwordInput.value = '';
                     }
                 }, 3000);
             }
         });
     }
+
 
     function validateUsername() {
         const value = usernameInput.value.trim();
@@ -73,18 +77,21 @@
     }
 
     function checkUserCredentials(username, password) {
-        const savedData = localStorage.getItem('formData');
-        if (!savedData) return { isValid: false, message: "Username not registered", field: "username" };
-        const { username: savedUsername, password: savedPassword } = JSON.parse(savedData);
-        const decryptedPassword = atob(savedPassword);
-        if (username !== savedUsername) {
-            return { isValid: false, message: "Username not found", field: "username" };
-        }
-        if (password !== decryptedPassword) {
-            return { isValid: false, message: "Incorrect password", field: "password" };
-        }
-        return { isValid: true };
+   const savedUsers = JSON.parse(localStorage.getItem('users')) || [];
+
+
+    const user = savedUsers.find(user => user.username === username);
+    if (!user) {
+        return { isValid: false, message: "Username not found", field: "username" };
     }
+
+    const decryptedPassword = atob(user.password);
+    if (password !== decryptedPassword) {
+        return { isValid: false, message: "Incorrect password", field: "password" };
+    }
+
+    return { isValid: true };
+}
 
     usernameInput.addEventListener('input', () => {
         clearError(usernameInput);

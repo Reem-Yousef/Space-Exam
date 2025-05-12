@@ -127,24 +127,26 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         if (isFormValid) {
-            const formData = {
-                username: inputs.username.value.trim(),
-                email: inputs.email.value.trim(),
-                password: btoa(inputs.password.value)
-            };
+   const newUser = {
+        username: inputs.username.value.trim(),
+        email: inputs.email.value.trim(),
+        password: btoa(inputs.password.value)
+    };
 
-            localStorage.setItem('formData', JSON.stringify(formData));
+     let users = JSON.parse(localStorage.getItem('users')) || [];
 
-            form.classList.add('submitting');
-            setTimeout(() => {
-                form.reset();
-                form.classList.remove('submitting');
-                window.location.href = 'login.html';
-            }, 800);
-        } else {
-            const firstInvalid = Object.keys(inputs).find(key => !validateInput(key));
-            if (firstInvalid) inputs[firstInvalid].focus();
-        }
+     users.push(newUser);
+
+      localStorage.setItem('users', JSON.stringify(users));
+
+    form.reset();
+    form.classList.remove('submitting');
+    window.location.href = 'login.html';
+} else {
+    const firstInvalid = Object.keys(inputs).find(key => !validateInput(key));
+    if (firstInvalid) inputs[firstInvalid].focus();
+}
+
     });
 
     setupRealTimeValidation();

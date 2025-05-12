@@ -365,10 +365,8 @@ const updateTimerDisplay = () => {
     elements.timerElement.classList.toggle('warning', isWarning);
     
     if (isWarning) {
-        // Apply pulse animation to the timer container
         elements.timerElement.style.animation = 'pulse-warning 1s infinite alternate';
         
-        // Setup shake animation for the clock icon
         if (!state.isShaking) {
             state.isShaking = true;
             state.shakeInterval = setInterval(() => {
