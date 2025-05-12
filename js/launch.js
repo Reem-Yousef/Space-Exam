@@ -64,6 +64,10 @@ document.addEventListener('click', function(event) {
 
 });
 
-document.getElementById("startExamBtn").addEventListener("click" , function(){
-    location.replace("Exam.html"); 
-});
+// document.querySelector(".start-button").addEventListener("click" , function(){
+//     window.location.replace("Exam.html"); 
+// });
+
+// document.querySelector(".btn").addEventListener("click" , function(){
+//     window.location.replace("Exam.html"); 
+// });

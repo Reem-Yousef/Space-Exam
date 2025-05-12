@@ -9,6 +9,218 @@
     <title>Exam page</title>
     <link rel="stylesheet" href="../css/spaceBG.css" />
     <link rel="stylesheet" href="../css/Exam.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+      .exam-content {
+        display: none;
+      }
+      .exam-content.active {
+        display: block;
+      }
+
+      .ready-btn {
+        background: transparent;
+        color: #00ff88;
+        border: 2px solid #00ff88;
+        padding: 12px 30px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 600;
+        position: relative;
+        overflow: hidden;
+        margin: 0 15px;
+        text-shadow: 0 0 5px #00ff88;
+        box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+      }
+
+      .ready-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 255, 136, 0.2),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .ready-btn:hover {
+        background: rgba(0, 255, 136, 0.1);
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        transform: scale(1.05);
+      }
+
+      .ready-btn:hover::before {
+        left: 100%;
+      }
+
+      .ready-btn:active {
+        transform: scale(0.95);
+        box-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        margin-bottom: 20px;
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .header h1 {
+        margin: 0;
+        color: #fff;
+        text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+        font-size: 28px;
+        letter-spacing: 1px;
+      }
+
+      #confirmExitModal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background: rgba(20, 20, 30, 0.95);
+        border: 1px solid rgba(0, 255, 136, 0.3);
+        border-radius: 10px;
+        width: 90%;
+        max-width: 500px;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        animation: modalFadeIn 0.3s ease;
+      }
+
+      @keyframes modalFadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+      }
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+      }
+
+      .modal-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 255, 136, 0.1);
+        border: 2px solid #00ff88;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-icon i {
+        color: #00ff88;
+        font-size: 20px;
+      }
+
+      .modal-title {
+        color: #fff;
+        margin: 0;
+        font-size: 24px;
+        text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+      }
+
+      .modal-body {
+        margin-bottom: 25px;
+      }
+
+      .modal-message {
+        text-align: center;
+      }
+
+      .warning-text {
+        color: #ff4444;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+      }
+
+      .message-text {
+        color: #fff;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .modal-footer {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .modal-button {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .modal-button i {
+        font-size: 18px;
+      }
+
+      .modal-button.cancel {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .modal-button.confirm {
+        background: rgba(255, 68, 68, 0.1);
+        color: #ff4444;
+        border: 1px solid #ff4444;
+      }
+
+      .modal-button:hover {
+        transform: translateY(-2px);
+      }
+
+      .modal-button.cancel:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .modal-button.confirm:hover {
+        background: rgba(255, 68, 68, 0.2);
+      }
+
+      .modal-button:active {
+        transform: translateY(1px);
+      }
+    </style>
   </head>
 
   <body>
@@ -17,66 +229,125 @@
       <div class="exam-container">
         <div class="header">
           <h1>Space Knowledge Test</h1>
-           <div class="timer">
-              <!-- <img src="../images/download (1).png" class="clock-icon"> -->
-              <!-- <p class="time-display">02:00</p> -->
+          <button class="ready-btn">Ready to Start Exam</button>
+          <div class="timer">
+            <!-- <img src="../images/download (1).png" class="clock-icon"> -->
+            <!-- <p class="time-display">02:00</p> -->
+          </div>
+        </div>
+
+        <div class="exam-content">
+          <div class="question-numbers">
+            <div class="question-number active">1</div>
+            <div class="question-number">2</div>
+            <div class="question-number">3</div>
+            <div class="question-number">4</div>
+            <div class="question-number">5</div>
+          </div>
+
+          <div class="main-section">
+            <div class="left-section">
+              <div class="question-container">
+                <h3 id="question-title">Question 1</h3>
+                <p id="question-text"></p>
+                <div id="answers-container"></div>
+              </div>
             </div>
-        </div>
 
-        <div class="question-numbers">
-          <div class="question-number active">1</div>
-          <div class="question-number">2</div>
-          <div class="question-number">3</div>
-          <div class="question-number">4</div>
-          <div class="question-number">5</div>
-        </div>
+            <!-- Right Section -->
+            <div class="right-section">
+              <div class="list-toggle-buttons">
+                <button id="showMarkedBtn">Marked Questions</button>
+                <button id="showUnansweredBtn">Unanswered Questions</button>
+              </div>
+            </div>
 
-        <div class="main-section">
-          <div class="left-section">
-            <div class="question-container">
-              <h3 id="question-title">Question 1</h3>
-              <p id="question-text"></p>
-              <div id="answers-container"></div>
+            <!-- Popup: Marked Questions -->
+            <div id="markedPopup" class="popup">
+              <div class="popup-content">
+                <span class="close-btn" onclick="closePopup('markedPopup')">&times;</span>
+                <h3>Marked Questions</h3>
+                <ul id="markedList"></ul>
+              </div>
+            </div>
+
+            <!-- Popup: Unanswered Questions -->
+            <div id="unansweredPopup" class="popup">
+              <div class="popup-content">
+                <span class="close-btn">&times;</span>
+                <h3>Unanswered Questions</h3>
+                <ul id="unansweredList"></ul>
+              </div>
             </div>
           </div>
 
-        <!-- Right Section -->
-<div class="right-section">
-  <div class="list-toggle-buttons">
-    <button id="showMarkedBtn">Marked Questions</button>
-    <button id="showUnansweredBtn">Unanswered Questions</button>
-  </div>
-</div>
+          <div class="actions">
+            <button id="prevBtn" class="nav-btn">Previous</button>
+            <button id="markBtn" class="mark-btn">Mark</button>
+            <button id="nextBtn" class="nav-btn">Next</button>
+            <button id="submitBtn" class="submit-btn">Submit</button>
+          </div>
+        </div>
+      </div>
 
-<!-- Popup: Marked Questions -->
-<div id="markedPopup" class="popup">
-  <div class="popup-content">
-    <span class="close-btn" onclick="closePopup('markedPopup')">&times;</span>
-    <h3>Marked Questions</h3>
-    <ul id="markedList"></ul>
-  </div>
-</div>
-
-<!-- Popup: Unanswered Questions -->
-<div id="unansweredPopup" class="popup">
-    <div class="popup-content">
-        <span class="close-btn">&times;</span>
-        <h3>Unanswered Questions</h3>
-        <ul id="unansweredList"></ul>
-    </div>
-</div>
-
-
-</div>
-<div class="actions">
-  <button id="prevBtn" class="nav-btn">Previous</button>
-  <button id="markBtn" class="mark-btn">Mark</button>
-  <button id="nextBtn" class="nav-btn">Next</button>
-  <button id="submitBtn" class="submit-btn">Submit</button>
-</div>
+      <!-- Exit Confirmation Modal -->
+      <div id="confirmExitModal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-icon">
+              <i class="fas fa-power-off"></i>
+            </div>
+            <h2 class="modal-title">Confirm Exit from Exam</h2>
+          </div>
+          <div class="modal-body">
+            <div class="modal-message">
+              <p class="warning-text">Warning!</p>
+              <p class="message-text">
+                Are you sure you want to exit the exam?<br>
+                You will be directed to home page.
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button id="cancelExitBtn" class="modal-button cancel">
+              <i class="fas fa-times"></i>
+              <span>Return to Exam</span>
+            </button>
+            <button id="confirmExitBtn" class="modal-button confirm">
+              <i class="fas fa-check"></i>
+              <span>End Exam</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <script src="../js/exam.js"></script>
     <script src="../js/spaceBG.js"></script>
+   
+    <script>
+     window.onload = function() {
+    const modal = document.getElementById('confirmExitModal');
+    const cancelBtn = document.getElementById('cancelExitBtn');
+    const confirmBtn = document.getElementById('confirmExitBtn');
+
+    document.addEventListener('fullscreenchange', function() {
+        if (!document.fullscreenElement && state.isExamStarted) {
+            modal.style.display = 'flex';
+        }
+    });
+
+    cancelBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.documentElement.requestFullscreen();
+    });
+
+    confirmBtn.addEventListener('click', function() {
+        state.isExamStarted = false;
+        // Use a relative path or adjust the path based on your project structure
+        window.location.href = '../index.html'; // Simplified path
+    });
+};
+    </script>
   </body>
 </html>

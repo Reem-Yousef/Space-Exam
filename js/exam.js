@@ -16,7 +16,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         markedPopup: document.getElementById('markedPopup'),
         unansweredPopup: document.getElementById('unansweredPopup'),
         closeBtns: document.querySelectorAll('.close-btn'),
-        unansweredList: document.getElementById('unansweredList')
+        unansweredList: document.getElementById('unansweredList'),
+        confirmExitModal: document.getElementById('confirmExitModal'),
+        cancelExitBtn: document.getElementById('cancelExitBtn'),
+        confirmExitBtn: document.getElementById('confirmExitBtn')
     };
 
     const state = {
@@ -28,7 +31,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         timeLeft: 120,
         timerInterval: null,
         shakeInterval: null,
-        isShaking: false
+        isShaking: false,
+        isExamStarted: false
     };
 
     const handlePreviousQuestion = () => {
@@ -76,11 +80,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    const handlePopState = (event) => {
-        window.history.pushState(null, null, window.location.href);
-        alert("الرجاء عدم استخدام زر الرجوع خلال الاختبار!");
-    };
-
     const setupEventListeners = () => {
         elements.prevBtn.addEventListener('click', handlePreviousQuestion);
         elements.nextBtn.addEventListener('click', handleNextQuestion);
@@ -95,8 +94,26 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         elements.closeBtns.forEach(btn => {
             btn.addEventListener('click', handleClosePopup);
+            window.addEventListener('click', handleWindowClick);
         });
 
+        // Add fullscreen change event listener
+        document.addEventListener('fullscreenchange', function() {
+            if (!document.fullscreenElement && state.isExamStarted) {
+                elements.confirmExitModal.style.display = 'flex';
+            }
+        });
+
+        // Add exit modal button listeners
+        elements.cancelExitBtn.addEventListener('click', function() {
+            elements.confirmExitModal.style.display = 'none';
+            document.documentElement.requestFullscreen();
+        });
+
+        elements.confirmExitBtn.addEventListener('click', function() {
+            state.isExamStarted = false;
+            window.location.href = '../index.html';
+        });
     };
 
     const shuffle = (array) => {
@@ -230,10 +247,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     };
 
-    const getUnansweredQuestions = () => {
-        return Array.from({ length: state.questions.length }, (_, i) => i)
-            .filter(i => !state.userAnswers.has(i));
-    };
+       const getUnansweredQuestions = () => {
+        return state.questions
+            .map((_, index) => index) 
+            .filter(index => !state.userAnswers.has(index)); 
+        };
 
     const updateUnansweredList = () => {
         const unansweredQuestions = getUnansweredQuestions();
@@ -351,48 +369,51 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (state.timeLeft <= 0) handleTimeOut();
         }, 1000);
     };
-const updateTimerDisplay = () => {
-    const minutes = Math.floor(state.timeLeft / 60).toString().padStart(2, '0');
-    const seconds = (state.timeLeft % 60).toString().padStart(2, '0');
-    const clockIcon = document.querySelector('.clock-icon');
 
-    elements.timerElement.innerHTML = `
-        <img src="../images/download (1).png" class="clock-icon">
-        <p class="time-display">${minutes}:${seconds}</p>
-    `;
-    
-    const isWarning = state.timeLeft <= 30;
-    elements.timerElement.classList.toggle('warning', isWarning);
-    
-    if (isWarning) {
-        elements.timerElement.style.animation = 'pulse-warning 1s infinite alternate';
+    const updateTimerDisplay = () => {
+        const minutes = Math.floor(state.timeLeft / 60).toString().padStart(2, '0');
+        const seconds = (state.timeLeft % 60).toString().padStart(2, '0');
+        const clockIcon = document.querySelector('.clock-icon');
+
+        elements.timerElement.innerHTML = `
+            <img src="../images/download (1).png" class="clock-icon">
+            <p class="time-display">${minutes}:${seconds}</p>
+        `;
         
-        if (!state.isShaking) {
-            state.isShaking = true;
-            state.shakeInterval = setInterval(() => {
+        const isWarning = state.timeLeft <= 30;
+        elements.timerElement.classList.toggle('warning', isWarning);
+        
+        if (isWarning) {
+            // Apply pulse animation to the timer container
+            elements.timerElement.style.animation = 'pulse-warning 1s infinite alternate';
+            
+            // Setup shake animation for the clock icon
+            if (!state.isShaking) {
+                state.isShaking = true;
+                state.shakeInterval = setInterval(() => {
+                    const clockIcon = document.querySelector('.clock-icon');
+                    if (clockIcon) {
+                        clockIcon.classList.add('shake');
+                        setTimeout(() => {
+                            clockIcon.classList.remove('shake');
+                        }, 500);
+                    }
+                }, 3000);
+            }
+        } 
+        else {
+            elements.timerElement.style.animation = '';
+            
+            if (state.shakeInterval) {
+                clearInterval(state.shakeInterval);
+                state.isShaking = false;
                 const clockIcon = document.querySelector('.clock-icon');
                 if (clockIcon) {
-                    clockIcon.classList.add('shake');
-                    setTimeout(() => {
-                        clockIcon.classList.remove('shake');
-                    }, 500);
+                    clockIcon.classList.remove('shake');
                 }
-            }, 3000);
-        }
-    } 
-    else {
-        elements.timerElement.style.animation = '';
-        
-        if (state.shakeInterval) {
-            clearInterval(state.shakeInterval);
-            state.isShaking = false;
-            const clockIcon = document.querySelector('.clock-icon');
-            if (clockIcon) {
-                clockIcon.classList.remove('shake');
             }
         }
-    }
-};
+    };
 
     const handleTimeOut = () => {
         clearInterval(state.timerInterval);
@@ -481,8 +502,62 @@ const updateTimerDisplay = () => {
     const init = () => {
         setupEventListeners();
         addButtonStyles();
+    };
+
+    // Function to disable keyboard
+    const disableKeyboard = (e) => {
+        if (state.isExamStarted) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+    };
+
+    // Function to enter fullscreen
+    const enterFullScreen = () => {
+        const elem = document.documentElement;
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        }
+    };
+
+    // Function to start exam
+    const startExam = () => {
+        state.isExamStarted = true;
+        enterFullScreen();
+        
+        // Hide ready button
+        const startExamBtn = document.querySelector('.ready-btn');
+        if (startExamBtn) {
+            startExamBtn.style.display = 'none';
+        }
+
+        // Show exam content
+        const examContent = document.querySelector('.exam-content');
+        if (examContent) {
+            examContent.classList.add('active');
+        }
+
+        // Start loading questions
         loadQuestions();
     };
+
+    // Add keyboard event listeners
+    document.addEventListener('keydown', disableKeyboard, true);
+    document.addEventListener('keyup', disableKeyboard, true);
+    document.addEventListener('keypress', disableKeyboard, true);
+
+    // Add ready button event listener
+    const startExamBtn = document.querySelector('.ready-btn');
+    if (startExamBtn) {
+        startExamBtn.addEventListener('click', startExam);
+    }
 
     init();
 });

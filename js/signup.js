@@ -152,3 +152,11 @@ document.addEventListener('DOMContentLoaded', function () {
     setupRealTimeValidation();
     setupPasswordToggles();
 });
+
+// document.querySelector(".signbtn").addEventListener("click" , function(){
+//     window.location.replace("login.html"); 
+// });
+
+// document.querySelector(".log").addEventListener("click" , function(){
+//     window.location.replace("login.html"); 
+// });

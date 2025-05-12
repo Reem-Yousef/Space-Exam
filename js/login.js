@@ -150,3 +150,11 @@
 
     setupSmartAutofill();
 });
+
+// document.querySelector(".regbtn").addEventListener("click" , function(){
+//     window.location.replace("Launch.html"); 
+// });
+
+// document.querySelector(".sign").addEventListener("click" , function(){
+//     window.location.replace("Signup.html"); 
+// });

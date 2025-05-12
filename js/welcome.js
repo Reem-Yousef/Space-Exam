@@ -120,3 +120,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     setTimeout(startSequence, 3500);
 });
+
+// document.querySelector(".primary").addEventListener("click" , function(){
+//     window.location.replace("html/Signup.html"); 
+// });
+// document.querySelector(".secondary").addEventListener("click" , function(){
+//     window.location.replace("html/login.html"); 
+// });
