@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>log in</title>
+    <link rel="stylesheet" href="../css/Auth.css" />
+    <link rel="stylesheet" href="../css/spaceBG.css" />
+  </head>
+  <body>
+    <section class="scene">
+      <!-- stars -->
+      <div class="stars"></div>
+
+      <!-- meteor -->
+         <div class="meteor" style="display: none;"></div>
+
+      <!-- Planets -->
+      <div class="planet planet-1">
+        <div class="planet-ring"></div>
+      </div>
+      <div class="planet planet-2"></div>
+
+      <!-- here continue any container i.e. signUp -->
+      <div class="container">
+        <h2>Log In</h2>
+
+        <form id="form">
+            <div class="input-form">
+    <label for="username">Username</label>
+    <input type="text" id="username" list="usernameOptions" placeholder="Enter your username" autocomplete="username">
+    <div id="error-username" class="error"></div>
+</div>
+
+
+          <div class="input-form">
+            <label for="password">Password</label>
+            <div class="passcontainer">
+              <!-- <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Enter Password"
+              /> -->
+              <input type="password" id="password" name="password" autocomplete="current-password">
+              <img
+                src="../images/two-eyelashes.png"
+                id="toggle-password"
+                alt="Toggle Password"
+              />
+            </div>
+            <div class="error" id="error-password"></div>
+          </div>
+          <div class="remember-me">
+            <input type="checkbox" id="remember-me" name="remember-me">
+            <label for="remember-me">Remember me</label>
+        </div>
+
+          <div class="regbtn">
+            <button type="submit">Log In</button>
+            <p>Don't have an account ? <a class="sign" href="signup.html">sign up</a></p>
+          </div>
+        </form>
+      </div>
+    </section>
+    <script src="../js/spaceBG.js"></script>
+    <script src="../js/login.js"></script>
+  </body>
+</html>
+  </body>
+</html>

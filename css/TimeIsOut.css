@@ -1,0 +1,100 @@
+.timeout .result-icon {
+    background: radial-gradient(circle at 30% 30%, var(--timeout-gray), var(--cosmic-black));
+    box-shadow: 0 0 25px var(--timeout-gray);
+    margin: 10px auto;
+}
+
+.timeout .result-icon span img{
+    width: 150px;
+    height: 150px;
+    padding-top: 15px;
+    /* animation: Shake 0.5s infinite; */
+
+}
+
+.result-container{
+    height: 80vh;
+}
+
+.result-title{
+    margin-top: 15px;
+}
+
+.btn-timeout {
+    background: linear-gradient(45deg, var(--hot-pink), var(--dark-pink));
+    box-shadow: 0 0 15px rgba(255, 54, 163, 0.5);
+    margin-top: 20px;
+}
+
+ /* Timer animation for timeout page */
+ .timer-ring {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.timer-circle {
+    fill: none;
+    stroke: var(--success-pink);
+    stroke-width: 5;
+    stroke-linecap: round;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    stroke-dasharray: 283;
+    stroke-dashoffset: 283;
+    animation: countdown 5s linear forwards;
+}
+
+@keyframes countdown {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.img-container{
+    position: absolute;
+    left: 88%;
+    top: -15%;
+}
+
+.img-container img{
+    width: 100px;
+    height: 100px;
+    z-index: 20;
+}
+
+@media (max-width: 576px) {
+
+    .result-container{
+        height: 70vh;
+        top: -20px;
+    }
+
+    .timeout .result-icon span img{
+        width: 100px;
+        height: 100px;
+    }
+     .timer-ring {
+        width: 120px;
+        height: 120px;
+    }
+    .img-container{
+        left: 78%;
+        top: -12.5%;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 768px){
+    .timeout .result-icon span img{
+        width: 100px;
+        height: 100px;
+    }
+     .timer-ring {
+        width: 120px;
+        height: 120px;
+    }
+}

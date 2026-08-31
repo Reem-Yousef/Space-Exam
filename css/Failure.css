@@ -1,0 +1,124 @@
+/* Cosmic Styles */
+:root {
+  --hot-pink: #ff36a3;
+  --failure-black: #2a0a1a;
+  --dark-pink: #cc0066;
+  --cosmic-black: #0a0a15;
+  --light-pink: #ff9eda;
+}
+
+/* Failure State */
+.failure .result-icon {
+  background: radial-gradient(circle at 30% 30%, var(--failure-black), black);
+  box-shadow: 0 0 25px var(--failure-black);
+  border: 2px solid var(--hot-pink);
+}
+
+.failure .result-title { color: var(--light-pink); }
+
+.btn-failure {
+  background: linear-gradient(45deg, var(--dark-pink), var(--cosmic-black));
+  box-shadow: 0 0 15px rgba(181, 51, 138, 0.5);
+}
+
+/* Black Hole Core */
+.black-hole {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, black 40%, rgba(255,0,150,0.1));
+  box-shadow: 0 0 40px rgba(255,0,150,0.5);
+  animation: blackholePulse 3s ease-in-out infinite;
+}
+
+/* Spinning Elements */
+.swirl {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top: 3px solid var(--hot-pink);
+  border-radius: 50%;
+  animation: rotate 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  filter: blur(1px);
+}
+
+.light-ring {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 50%, rgba(255,0,150,0.2));
+  box-shadow: 0 0 15px rgba(255,0,150,0.3);
+  animation: ringSpin 8s linear infinite;
+}
+
+/* Central Elements */
+.event-horizon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 40px;
+  background: black;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+/* Image Animation */
+.img-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: cosmicOrbit 6s ease-in-out forwards;
+  z-index: 15;
+}
+
+.img-container img {
+  width: 70px;
+  height: 70px;
+  animation: gentleSpin 4s linear infinite;
+}
+
+/* Optimized Animations */
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ringSpin {
+  50% { transform: rotate(180deg) scale(1.05); }
+  to { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes blackholePulse {
+  50% { transform: scale(1.1); }
+}
+
+@keyframes cosmicOrbit {
+  0% { 
+    transform: rotate(0deg) translateX(120px) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: rotate(360deg) translateX(120px) rotate(-360deg) scale(1);
+    opacity: 1;
+  }
+  75% { transform: translate(-50%, -50%) scale(0.8); }
+  to { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+}
+
+@keyframes gentleSpin {
+  to { transform: rotate(360deg); }
+}
+
+
+@media (max-width: 768px) {
+  .black-hole { width: 50px; height: 50px; }
+  .light-ring { width: 70px; height: 70px; }
+  .event-horizon { width: 30px; height: 30px; }
+  .img-container img { width: 50px; height: 50px; }
+}

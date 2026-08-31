@@ -1,0 +1,52 @@
+[
+    {
+      "title": "What is the closest planet to the Sun?",
+      "answer1": "Earth",
+      "answer2": "Venus",
+      "answer3": "Mercury",
+      "answer4": "Mars",
+      "correctAnswer": "Mercury"
+    },
+    {
+      "title": "Who was the first human to travel into space?",
+      "answer1": "Neil Armstrong",
+      "answer2": "Yuri Gagarin",
+      "answer3": "Buzz Aldrin",
+      "answer4": "Michael Collins",
+      "correctAnswer": "Yuri Gagarin"
+    },
+    {
+      "title": "How many planets are in the Solar System?",
+      "answer1": "7",
+      "answer2": "8",
+      "answer3": "9",
+      "answer4": "10",
+      "correctAnswer": "8"
+    },
+    {
+      "title": "Which planet is known as the Red Planet?",
+      "answer1": "Saturn",
+      "answer2": "Neptune",
+      "answer3": "Mars",
+      "answer4": "Uranus",
+      "correctAnswer": "Mars"
+    },
+    {
+      "title": "What is the name of the famous space telescope launched in 1990?",
+      "answer1": "Cassini",
+      "answer2": "Hubble",
+      "answer3": "Spitzer",
+      "answer4": "Newton",
+      "correctAnswer": "Hubble"
+    }
+  ]
+  
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success page</title>
+    <link rel="stylesheet" href="../css/spaceBG.css">
+    <link rel="stylesheet" href="../css/Result.css">
+    <link rel="stylesheet" href="../css/Success.css">
+</head>
+<body>
+     <!-- start space bachground -->
+     <section class="scene">
+        
+        <!-- stars -->
+        <div class="stars"></div>
+
+        <!-- meteor -->
+         <!-- <div class="meteor" style="display: none;"></div> -->
+
+        <!-- Planets -->
+        <div class="planet planet-1">
+            <div class="planet-ring"></div>
+        </div>
+        <div class="planet planet-2"></div>
+
+        <!-- here continue any container i.e. signUp -->
+
+        <div id="success" class="result-container success">
+            <div class="image">
+                <div class="ufo-beam"></div>
+                <img src="../images/download (2).png">
+            </div>
+            <h1 class="result-title">Misson Completed!</h1>
+            <!-- <p class="result-message"></p> -->
+           
+            <div class="result-info">
+                 <div class="true-answers">
+                <p>Correct Answers:</p>
+                <span id="correct"></span>/<span id="total"></span>
+            </div>
+
+            <div class="true-answers">
+                <p>Time Spent:</p>
+                <p id="timeSpent"></p>
+            </div>
+            </div>
+
+             <div class="score">Your Score: <span id="scorePercent"></span>%</div>
+            <p class="result-message">You've demonstrated excellent knowledge of interstellar studies.</p>
+            <button id="logout-btn" class="button btn-success" 
+            style="background: linear-gradient(45deg, var(--dark-pink), black)">
+            Log Out
+        </button>
+        <button
+          class="button btn-success"
+          style="background: linear-gradient(45deg, black, var(--dark-pink))"
+          onclick="window.location.href='../index.html';"
+        >
+          Home Galaxy
+        </button>
+
+
+    </section>
+    <script src="../js/spaceBG.js"></script>
+    <script src="../js/Success.js"></script>
+    <script src="../js/logout.js"></script>
+    
+</body>
+</html>

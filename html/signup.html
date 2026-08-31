@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../css/Auth.css" />
+    <link rel="stylesheet" href="../css/spaceBG.css" />
+  </head>
+  <body>
+    <section class="scene">
+      <!-- stars -->
+      <div class="stars"></div>
+
+      <!-- meteor -->
+         <div class="meteor" style="display: none;"></div>
+
+      <!-- Planets -->
+      <div class="planet planet-1">
+        <div class="planet-ring"></div>
+      </div>
+      <div class="planet planet-2"></div>
+
+      <!-- here continue any container i.e. signUp -->
+      <div class="container">
+        <h2>Sign Up</h2>
+
+        <form id="form">
+          <div class="input-form">
+            <label for="username">User Name</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter Name"
+            />
+            <div class="error" id="error-username"></div>
+          </div>
+
+          <div class="input-form">
+            <label for="email">E-mail</label>
+            <input type="text" id="email" placeholder="Enter E-mail" />
+            <div id="error-email" class="error"></div>
+          </div>
+
+          <div class="input-form">
+            <label for="password">Password</label>
+            <div class="passcontainer">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Enter Password"
+              />
+              <img
+                src="../images/two-eyelashes.png"
+                id="toggle-password"
+                alt="Toggle Password"
+              />
+            </div>
+            <div class="error" id="error-password"></div>
+          </div>
+
+          <div class="input-form">
+            <label for="confpass">Confirm Password</label>
+            <div class="passcontainer">
+              <input
+                type="password"
+                name="confpass"
+                id="confpass"
+                placeholder="Confirm Password"
+              />
+              <img
+                src="../images/two-eyelashes.png"
+                id="toggle-confpass"
+                alt="Toggle Confirm Password"
+              />
+            </div>
+            <div class="error" id="error-confpass"></div>
+          </div>
+
+          <div class="regbtn">
+            <button class="signbtn" type="submit">Sign Up</button>
+            <p>Already have an account ? <a class="log" href="login.html">log in</a></p>
+          </div>
+        </form>
+      </div>
+    </section>
+    <script src="../js/spaceBG.js"></script>
+    <script src="../js/signup.js"></script>
+  </body>
+</html>
